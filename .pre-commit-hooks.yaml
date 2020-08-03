@@ -10,4 +10,5 @@
     description: Check if CHANGELOG file was changed.
     entry: update_change_log.sh
     language: script
-    types: [text]
+    pass_filenames: false
+    type: [md]
