@@ -3,6 +3,7 @@
     description: Check if VERSION file was changed.
     entry: update_version.sh
     language: script
+    pass_filenames: false
     types: [text]
 
 -   id: change_log_checker
