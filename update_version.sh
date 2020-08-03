@@ -3,7 +3,11 @@ yellow='\033[0;33m'
 reset_color='\033[0m'
 
 current_branch=$(git branch --show-current)
-echo "$current_branch"
+echo $current_branch
+
+changes=$(git status)
+echo $changes
+
 
 if [[ -z $(git diff VERSION) && -n $(git status | grep "$1*") ]]
 then
@@ -13,5 +17,10 @@ then
 
     exit 1
 else
+    current_branch=$(git branch --show-current)
+    echo -e $current_branch
+
+    changes=$(git status)
+    echo $changes
     exit 0
 fi
