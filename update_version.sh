@@ -6,12 +6,17 @@ current_branch=$(git branch --show-current)
 changed=$(git diff --name-only $current_branch $(git merge-base $current_branch "master"))
 echo $changed
 
+version_changed=$(grep "VERSION" <<< echo $changed)
+files_changed=$(grep "$1" <<< $changed)
 
-if [[ -z $(git diff VERSION) && -z $(grep "VERSION" <<< echo $changed) && (-n $(git status | grep "$1*") || -n $changed) ]]
+echo $version_changed
+echo $files_changed
+
+
+if [[ -z $(git diff VERSION) && -z $version_changed && (-n $(git status | grep "$1*") || -n $files_changed) ]]
 then
-    old_version=$(git diff VERSION | grep "^\-[1-9].[0-9].[0-9]" | cut -c2-6)
-    new_version=$(git diff VERSION | grep "^\+[1-9].[0-9].[0-9]" | cut -c2-6)
-    echo -e "${yellow} [WARNING] VERSION file wasn't changed. Version will be set automatically.${reset_color}"
+
+    echo -e "${yellow} [WARNING] VERSION file wasn't updated.${reset_color}"
 
     exit 1
 else
