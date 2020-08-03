@@ -2,8 +2,9 @@
 yellow='\033[0;33m'
 reset_color='\033[0m'
 
-current_branch=$(git rev-parse --abbrev-ref HEAD)
-changed=$(git diff --name-only $current_branch "master"...)
+current_branch=$(git branch --show-current)
+echo $current_branch
+changed=$(git diff --name-only HEAD~ HEAD )
 echo $changed
 
 version_changed=$(grep "VERSION" <<< echo $changed)
