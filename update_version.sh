@@ -3,7 +3,7 @@ yellow='\033[0;33m'
 reset_color='\033[0m'
 
 current_branch=$(git branch --show-current)
-changed=$(git diff --name-only $current_branch $(git merge-base $current_branch "master"))
+changed=$(git diff --name-only $current_branch "master"...)
 echo $changed
 
 version_changed=$(grep "VERSION" <<< echo $changed)
