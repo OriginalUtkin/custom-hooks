@@ -1,0 +1,13 @@
+- id: version_checker
+    name: Version checker
+    description: Check if VERSION file was changed.
+    entry: update_version.sh
+    language: script
+    types: [text]
+
+  - id: change_log_checker
+    name: CHANGELOG checker
+    description: Check if CHANGELOG file was changed.
+    entry: update_change_log.sh
+    language: script
+    types: [text]
