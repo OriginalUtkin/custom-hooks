@@ -13,7 +13,8 @@ echo $version_changed
 echo $files_changed
 
 
-if [[ -z $(git diff VERSION) && -z $version_changed && (-n $(git status | grep "$1*") || -n $files_changed) ]]
+#if [[ (-z $(git diff VERSION) || -z $version_changed) && (-n $(git status | grep "$1*") || -n $files_changed) ]]
+if [[ -z $version_changed &&  -n $files_changed ]]
 then
 
     echo -e "${yellow} [WARNING] VERSION file wasn't updated.${reset_color}"
