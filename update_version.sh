@@ -4,7 +4,8 @@ reset_color='\033[0m'
 
 current_branch=$(git branch --show-current)
 echo $current_branch
-changed=$(git diff --name-only HEAD~ HEAD )
+changed=$(git diff --name-only "origin/master" $current_branch)
+
 echo $changed
 
 version_changed=$(grep "VERSION" <<< echo $changed)
