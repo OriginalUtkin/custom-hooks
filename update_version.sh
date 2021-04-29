@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
+
 version_in_branch=$(cat VERSION)
-
-echo $version_in_branch
-
-version_in_master=$(git add -f worktree master_state | cat master_state/VERSION)
-
-echo $version_in_master
+git worktree add master_state
+version_in_master=$(cat master_state/VERSION)
 
 if [[ "$version_in_branch" == "$version_in_master" ]]
 then
