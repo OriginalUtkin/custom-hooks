@@ -12,5 +12,6 @@ then
   echo "${red} VERSION file is not updated ${reset_color}"
   exit 1
 else
+  echo "VERSION is updated to new version"
   exit 0
 fi
