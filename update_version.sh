@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-red='\033[0;31m'
-reset_color='\033[0m'
+version_in_branch=$(cat VERSION)
 
-old_version=$(git diff VERSION | grep "^\-[1-9].[0-9].[0-9]" | cut -c2-6)
-new_version=$(git diff VERSION | grep "^\+[1-9].[0-9].[0-9]" | cut -c2-6)
+echo $version_in_branch
 
-if [[ -z $(git diff VERSION) && -n $(git status | grep "$1*") ]]
+version_in_master=$(git checkout master | cat VERSION)
+
+echo $version_in_master
+
+if [[ "$version_in_branch" == "$version_in_master" ]]
 then
-    echo -e "${red} [ERROR] VERSION file wasn't changed. Current version.${reset_color}"
-    exit 1
+  exit 0
 else
-    exit 0
+  echo "${red} VERSION file is not updated ${reset_color}"
 fi
