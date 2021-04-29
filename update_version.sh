@@ -9,7 +9,8 @@ echo $version_in_master
 
 if [[ "$version_in_branch" == "$version_in_master" ]]
 then
-  exit 0
-else
   echo "${red} VERSION file is not updated ${reset_color}"
+  exit 1
+else
+  exit 0
 fi
