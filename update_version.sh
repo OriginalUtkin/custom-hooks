@@ -12,6 +12,7 @@ then
   echo "${red} VERSION file is not updated ${reset_color}"
   exit 1
 else
-  echo "VERSION is updated to new version"
-  exit 0
+  echo $version_in_master
+  echo $version_in_branch
+  exit 1
 fi
