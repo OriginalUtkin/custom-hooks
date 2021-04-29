@@ -3,7 +3,7 @@ version_in_branch=$(cat VERSION)
 
 echo $version_in_branch
 
-version_in_master=$(git worktree master_state | cd master_state | cat VERSION)
+version_in_master=$(git add -f worktree master_state | cd master_state | cat VERSION)
 
 echo $version_in_master
 
