@@ -4,7 +4,7 @@ red='\033[0;31m'
 version_in_branch=$(cat VERSION)
 echo $(git branch -a)
 
-git worktree add master_state master
+git worktree add master_state remotes/origin/master
 version_in_master=$(cat master_state/VERSION)
 
 if [[ "$version_in_branch" == "$version_in_master" ]]
