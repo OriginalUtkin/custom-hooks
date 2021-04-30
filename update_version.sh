@@ -6,9 +6,8 @@ version_in_branch=$(cat VERSION)
 echo "MR branch:" $version_in_branch
 
 git fetch -q origin master
-git worktree add -q master_state origin/master
 
-version_in_master=$(cat master_state/VERSION)
+version_in_master=$(git show origin/master:VERSION)
 
 echo "master:" $version_in_master
 
