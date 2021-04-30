@@ -10,7 +10,7 @@ echo "master:" $version_in_master
 
 changed_files=$(git diff origin/master --summary --name-only |  grep "kw/proton3\|requirements.*")
 
-if [[ "$version_in_branch" == "$version_in_master" && -z $changed_files]]
+if [[ ("$version_in_branch" == "$version_in_master") && (! -z $changed_files)]]
 then
   echo "VERSION file is not updated"
   exit 1
