@@ -1,6 +1,6 @@
 -   id: version_checker
     name: Version checker
-    description: Check if VERSION file was changed.
+    description: Check if version in VERSION file or pyproject.toml was changed.
     entry: update_version.sh
     language: script
     pass_filenames: false
