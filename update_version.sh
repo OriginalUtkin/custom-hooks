@@ -14,7 +14,7 @@ fi
 tfile=$(mktemp $version_file.XXXXXXXXX)
 mv $version_file $tfile
 git fetch -q origin master
-git restore --source master -q -- $version_file
+git checkout master -q -- $version_file
 version_in_master=$($command)
 mv $tfile $version_file
 version_in_branch=$($command)
